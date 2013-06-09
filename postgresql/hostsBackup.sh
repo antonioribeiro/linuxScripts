@@ -2,10 +2,9 @@
 
 backupDir="/tank/\!backup"
 
+remoteUser=root
 remoteHost=ks300977.kimsufi.com
 remoteDir="/tank/\!backup"
-
-rsync -avz -e ssh $remoteHost:$remoteDir $backupdir/$remoteHost
 
 function main()
 {
@@ -21,7 +20,7 @@ function createDir()
 function copyBackup()
 {
     mkdir -p $backupDir
-    su --login --command "pg_dump $database | gzip " postgres | tee $fileName > /dev/null
+    rsync -avz -e ssh $remoteUser@$remoteHost:$remoteDir $backupdir/$remoteHost
 }
 
 main
