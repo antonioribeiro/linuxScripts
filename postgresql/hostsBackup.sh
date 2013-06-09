@@ -1,10 +1,10 @@
 #!/bin/bash
 
-backupDir="/tank/\!backup"
+backupDir="/tank/!backup"
 
 remoteUser=root
 remoteHost=ks300977.kimsufi.com
-remoteDir="/tank/\!backup"
+remoteDir="/backup"
 
 function main()
 {
@@ -14,13 +14,14 @@ function main()
 
 function createDir()
 {
-    mkdir -p $backupdir/$remoteHost
+    mkdir "$backupDir/$remoteHost"
+    echo "mkdir -p $backupDir/$remoteHost"
 }
 
 function copyBackup()
 {
-    mkdir -p $backupDir
-    rsync -avz -e ssh $remoteUser@$remoteHost:$remoteDir $backupdir/$remoteHost
+    echo $backupDir/$remoteHost
+    rsync --progress -avz -e ssh $remoteUser@$remoteHost:$remoteDir $backupDir/$remoteHost
 }
 
 main
