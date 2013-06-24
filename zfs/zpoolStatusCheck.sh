@@ -1,7 +1,7 @@
 #!/bin/bash
 zfsstat=`zpool status -x | awk '{print $4}'`
 
-if [ $zfsstat != 'healthyX' ]; then
+if [ $zfsstat != 'healthy' ]; then
      /bin/date > /tmp/zfs.stat
      echo >> /tmp/zfs.stat
      /bin/hostname >> /tmp/zfs.stat
