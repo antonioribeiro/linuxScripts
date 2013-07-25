@@ -2,4 +2,4 @@
 
 cd /var/www/vhosts/antoniocarlosribeiro.com/vevey.com.br/staging/ 
 
-artisan store:notifications --env=staging
+php artisan store:notifications --env=staging
